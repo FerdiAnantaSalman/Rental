@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="card mb-4">
-    <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Data Sopir</div>
     <div class="card-body">
         <div class="table-responsive">
             @if ($message = Session::get('success'))
