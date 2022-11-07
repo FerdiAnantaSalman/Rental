@@ -88,7 +88,7 @@ class ProdukController extends Controller
             'ket' => 'required',
         ]);
 
-        Produk::update($request->all());
+        $produk->update($request->all());
         return redirect()->route('produk.index')
             ->with('succsess', 'Product updated succsessfully.');
     }

@@ -38,13 +38,13 @@
                     @foreach($produks as $produk)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td><img width="150px" src="{{ url('/data_file/',$produk->gambar) }}"></td>
+                        <td><img width="150px" align="center" src="{{ url('/data_file/',$produk->gambar) }}"></td>
                         <td>{{ $produk->nm_produk}}</td>
                         <td>{{ $produk->harga}}</td>
                         <td>{{ $produk->stok}}</td>
                         <td>{{ $produk->ket}}</td>
                         <td>
-                            <form action="{{ route('produk.edit', $produk->id); }}" method="POST">
+                            <form action="{{ route('produk.destroy', $produk->id); }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <a class="btn btn-warning" href="{{ route('produk.edit', $produk->id); }}">Edit</a>
