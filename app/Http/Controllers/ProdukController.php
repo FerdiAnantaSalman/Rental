@@ -25,6 +25,8 @@ class ProdukController extends Controller
             'harga' => 'required',
             'stok' => 'required',
             'ket' => 'required',
+            'gambar' => 'required',
+
         ]);
 
         $file =  $request->file('gambar');
@@ -34,7 +36,16 @@ class ProdukController extends Controller
         $tujuan_upload = 'data_file';
         $file->move($tujuan_upload, $nama_file);
 
-        Produk::create($request->all());
+        Produk::create([
+            'nm_produk' => $request->nm_produk,
+            'harga' => $request->harga,
+            'stok' => $request->stok,
+            'ket' => $request->ket,
+            'gambar' => $nama_file,
+
+
+        ]);
+
         return redirect()->route('produk.index')
             ->with('succsess', 'Product created succsessfully.');
     }
