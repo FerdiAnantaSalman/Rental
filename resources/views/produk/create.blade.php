@@ -15,9 +15,6 @@
                     <div>
                         <h2>Add New Product</h2>
                     </div>
-                    <div>
-                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
-                    </div>
                 </div>
             </div>
 
@@ -66,6 +63,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>

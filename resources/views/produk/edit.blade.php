@@ -15,9 +15,6 @@
                     <div>
                         <h2>Update Product</h2>
                     </div>
-                    <div>
-                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
-                    </div>
                 </div>
             </div>
 
@@ -63,10 +60,11 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Foto Produk:</strong>
-                            <input type="file" name="gambar">></textarea>
+                            <input type="file" name="gambar" value="{{ $produk->gambar }}"></textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>

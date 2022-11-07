@@ -26,7 +26,6 @@ class ProdukController extends Controller
             'stok' => 'required',
             'ket' => 'required',
             'gambar' => 'required',
-
         ]);
 
         $file =  $request->file('gambar');
@@ -42,8 +41,6 @@ class ProdukController extends Controller
             'stok' => $request->stok,
             'ket' => $request->ket,
             'gambar' => $nama_file,
-
-
         ]);
 
         return redirect()->route('produk.index')

@@ -19,5 +19,6 @@ class Sopir extends Model
         'gender',
         'alamat',
         'ket',
+        'gambar'
     ];
 }

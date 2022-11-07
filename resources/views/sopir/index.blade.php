@@ -16,6 +16,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Foto</th>
                         <th>Kode Sopir</th>
                         <th>Nama Sopir</th>
                         <th>No HP</th>
@@ -36,16 +37,24 @@
                     </tr>
                 </tfoot> -->
                 <tbody>
-                    @foreach($sopir as $data)
+                    @foreach($sopirs as $sopir)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td>{{ $data->kd_sopir}}</td>
-                        <td>{{ $data->nm_sopir}}</td>
-                        <td>{{ $data->nohp}}</td>
-                        <td>{{ $data->gender}}</td>
-                        <td>{{ $data->alamat}}</td>
-                        <td>{{ $data->ket}}</td>
-                        <td></td>
+                        <td><img width="150px" align="center" src="{{ url('/data_file/',$sopir->gambar) }}"></td>
+                        <td>{{ $sopir->kd_sopir}}</td>
+                        <td>{{ $sopir->nm_sopir}}</td>
+                        <td>{{ $sopir->nohp}}</td>
+                        <td>{{ $sopir->gender}}</td>
+                        <td>{{ $sopir->alamat}}</td>
+                        <td>{{ $sopir->ket}}</td>
+                        <td>
+                            <form action="{{ route('sopir.destroy', $sopir->id); }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a class="btn btn-warning" href="{{ route('sopir.edit', $sopir->id); }}">Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
