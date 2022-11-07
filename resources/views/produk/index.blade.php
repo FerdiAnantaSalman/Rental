@@ -41,7 +41,15 @@
                         <td>{{ $data->harga}}</td>
                         <td>{{ $data->stok}}</td>
                         <td>{{ $data->ket}}</td>
-                        <td></td>
+                        <td>
+                            <form action="{{ route('produk.destroy', $data->id); }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a class="btn btn-warning" href="{{ route('produk.edit', $data->id); }}">Edit</a>
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="javascript: return confirm('Apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
