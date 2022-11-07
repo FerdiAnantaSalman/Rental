@@ -27,6 +27,13 @@ class ProdukController extends Controller
             'ket' => 'required',
         ]);
 
+        $file =  $request->file('gambar');
+
+        $nama_file = time() . "_" . $file->getClientOriginalName();
+
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload, $nama_file);
+
         Produk::create($request->all());
         return redirect()->route('produk.index')
             ->with('succsess', 'Product created succsessfully.');

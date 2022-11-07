@@ -16,6 +16,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Foto</th>
                         <th>Nama Produk</th>
                         <th>Harga Produk</th>
                         <th>Stok Produk</th>
@@ -37,6 +38,7 @@
                     @foreach($produks as $produk)
                     <tr>
                         <td>{{ ++$i }}</td>
+                        <td><img width="150px" src="{{ url('/data_file/',$produk->gambar) }}"></td>
                         <td>{{ $produk->nm_produk}}</td>
                         <td>{{ $produk->harga}}</td>
                         <td>{{ $produk->stok}}</td>
