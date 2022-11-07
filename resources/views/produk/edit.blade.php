@@ -57,7 +57,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Keterangan:</strong>
-                            <textarea class="form-control" name="ket"></textarea>
+                            <textarea class="form-control" name="ket" placeholder="{{ $produk->ket }}"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Foto Produk:</strong>
+                            <input type="file" name="gambar">></textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">

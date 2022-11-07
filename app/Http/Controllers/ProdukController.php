@@ -61,9 +61,18 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produk $produk)
     {
-        //
+        $request->validate([
+            'nm_produk' => 'required',
+            'harga' => 'required',
+            'stok' => 'required',
+            'ket' => 'required',
+        ]);
+
+        Produk::update($request->all());
+        return redirect()->route('produk.index')
+            ->with('succsess', 'Product updated succsessfully.');
     }
 
     /**
@@ -72,8 +81,10 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Produk $produk)
     {
-        //
+        $produk->delete();
+        return redirect()->route('produk.index')
+            ->with('success', 'Data berhasil dihapus');
     }
 }
