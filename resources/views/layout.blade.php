@@ -63,7 +63,7 @@
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav"><a class="nav-link"
                                     href="{{ route('produk.index') }}">Data
-                                    Mobil</a><a class="nav-link" href="{{ route('sopir.index') }}">Data Sopir</a><a
+                                    Produk</a><a class="nav-link" href="{{ route('sopir.index') }}">Data Sopir</a><a
                                     class="nav-link" href="layout-sidenav-light.html">Data Konsumen</a>
                             </nav>
                         </div>

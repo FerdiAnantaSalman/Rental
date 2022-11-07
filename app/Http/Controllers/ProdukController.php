@@ -9,8 +9,8 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $produk =  Produk::latest()->paginate(20);
-        return view('produk.index', compact('produk'))->with('i', (request()->input('page', 1) - 1) * 20);
+        $produks =  Produk::latest()->paginate(20);
+        return view('produk.index', compact('produks'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
@@ -49,9 +49,9 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produk $produk)
     {
-        //
+        return view('produk.edit', compact('produk'));
     }
 
     /**

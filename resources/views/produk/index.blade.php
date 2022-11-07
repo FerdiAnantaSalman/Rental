@@ -34,18 +34,18 @@
                     </tr>
                 </tfoot> -->
                 <tbody>
-                    @foreach($produk as $data)
+                    @foreach($produks as $produk)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td>{{ $data->nm_produk}}</td>
-                        <td>{{ $data->harga}}</td>
-                        <td>{{ $data->stok}}</td>
-                        <td>{{ $data->ket}}</td>
+                        <td>{{ $produk->nm_produk}}</td>
+                        <td>{{ $produk->harga}}</td>
+                        <td>{{ $produk->stok}}</td>
+                        <td>{{ $produk->ket}}</td>
                         <td>
-                            <form action="{{ route('produk.destroy', $data->id); }}" method="POST">
+                            <form action="{{ route('produk.edit', $produk->id); }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a class="btn btn-warning" href="{{ route('produk.edit', $data->id); }}">Edit</a>
+                                <a class="btn btn-warning" href="{{ route('produk.edit', $produk->id); }}">Edit</a>
                                 <button type="submit" class="btn btn-danger"
                                     onclick="javascript: return confirm('Apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
                             </form>
