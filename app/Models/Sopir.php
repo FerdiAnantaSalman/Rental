@@ -12,7 +12,6 @@ class Sopir extends Model
     public $table = "sopir";
 
     protected $fillable = [
-        'id',
         'kd_sopir',
         'nm_sopir',
         'nohp',

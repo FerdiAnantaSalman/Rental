@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
-use App\Http\Controller\File;
 
-class ProdukController extends Controller
+class PeminjamanController extends Controller
 {
     public function index()
     {
-        $produks =  Produk::latest()->paginate(20);
-        return view('produk.index', compact('produks'))->with('i', (request()->input('page', 1) - 1) * 20);
+        $peminjamans =  Peminjaman::latest()->paginate(20);
+        return view('peminjaman.index', compact('peminjamans'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        return view('produk.create');
+        return view('peminjaman.create');
     }
 
     public function store(Request $request)
@@ -36,7 +35,7 @@ class ProdukController extends Controller
         $tujuan_upload = 'data_file';
         $file->move($tujuan_upload, $nama_file);
 
-        Produk::create([
+        Peminjaman::create([
             'nm_produk' => $request->nm_produk,
             'harga' => $request->harga,
             'stok' => $request->stok,
@@ -65,9 +64,9 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produk $produk)
+    public function edit(Peminjaman $peminjaman)
     {
-        return view('produk.edit', compact('produk'));
+        return view('peminjaman.edit', compact('peminjaman'));
     }
 
     /**
@@ -77,7 +76,7 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, Peminjaman $peminjaman)
     {
         $request->validate([
             'nm_produk' => 'required',
@@ -86,7 +85,7 @@ class ProdukController extends Controller
             'ket' => 'required',
         ]);
 
-        $produk->update($request->all());
+        $peminjaman->update($request->all());
         return redirect()->route('produk.index')
             ->with('succsess', 'Product updated succsessfully.');
     }
@@ -97,11 +96,11 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produk $produk)
+    public function destroy(Peminjaman $peminjaman)
     {
         // File::delete('data_file/', $produk->gambar);
 
-        $produk->delete();
+        $peminjaman->delete();
         return redirect()->route('produk.index')
             ->with('success', 'Data berhasil dihapus');
     }

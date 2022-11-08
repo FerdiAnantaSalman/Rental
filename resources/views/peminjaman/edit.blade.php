@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <h1 class="mt-4">Data Sopir</h1>
+    <h1 class="mt-4">Data Produk</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Produk/Barang</li>
     </ol>
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div>
-                        <h2>Add New Sopir</h2>
+                        <h2>Update Product</h2>
                     </div>
                 </div>
             </div>
@@ -28,56 +28,43 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('sopir.store') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
+            <form action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Kode Sopir:</strong>
-                            <input type="text" name="kd_sopir" class="form-control" placeholder="Kode Sopir"></input>
+                            <strong>Nama Produk:</strong>
+                            <input type="text" name="nm_produk" class="form-control"
+                                value="{{ $produk->nm_produk }}"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Nama Sopir:</strong>
-                            <input type="text" name="nm_sopir" class="form-control" placeholder="Nama Sopir"></input>
+                            <strong>Harga Produk:</strong>
+                            <input type="text" name="harga" class="form-control" value="{{ $produk->harga }}"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>No Hp:</strong>
-                            <input type="number" name="nohp" class="form-control" placeholder="No Hp"></input>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Gender:</strong>
-                            <select name="gender" class="form-control">
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="perempuran">Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Alamat:</strong>
-                            <input type="text" name="alamat" class="form-control" placeholder="Alamat"></input>
+                            <strong>Stok Produk:</strong>
+                            <input type="text" name="stok" class="form-control" value="{{ $produk->stok }}"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Keterangan:</strong>
-                            <textarea class="form-control" name="ket"></textarea>
+                            <textarea class="form-control" name="ket">{{ $produk->ket }}</textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Foto Sopir:</strong>
-                            <input type="file" name="gambar">></textarea>
+                            <strong>Foto Produk:</strong>
+                            <input type="file" name="gambar" value="{{ $produk->gambar }}"></textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                        <a class="btn btn-primary" href="{{ route('sopir.index') }}">Back</a>
+                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>

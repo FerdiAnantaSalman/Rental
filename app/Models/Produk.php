@@ -12,7 +12,6 @@ class Produk extends Model
     public $table = "produk";
 
     protected $fillable = [
-        'id',
         'nm_produk',
         'harga',
         'stok',

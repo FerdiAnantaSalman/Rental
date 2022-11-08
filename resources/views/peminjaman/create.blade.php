@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <h1 class="mt-4">Data Sopir</h1>
+    <h1 class="mt-4">Data Produk</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Produk/Barang</li>
     </ol>
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div>
-                        <h2>Add New Sopir</h2>
+                        <h2>Add New Product</h2>
                     </div>
                 </div>
             </div>
@@ -28,40 +28,26 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('sopir.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
+
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Kode Sopir:</strong>
-                            <input type="text" name="kd_sopir" class="form-control" placeholder="Kode Sopir"></input>
+                            <strong>Nama Produk:</strong>
+                            <input type="text" name="nm_produk" class="form-control" placeholder="Nama Produk"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Nama Sopir:</strong>
-                            <input type="text" name="nm_sopir" class="form-control" placeholder="Nama Sopir"></input>
+                            <strong>Harga Produk:</strong>
+                            <input type="text" name="harga" class="form-control" placeholder="Harga Produk"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>No Hp:</strong>
-                            <input type="number" name="nohp" class="form-control" placeholder="No Hp"></input>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Gender:</strong>
-                            <select name="gender" class="form-control">
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="perempuran">Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Alamat:</strong>
-                            <input type="text" name="alamat" class="form-control" placeholder="Alamat"></input>
+                            <strong>Stok Produk:</strong>
+                            <input type="text" name="stok" class="form-control" placeholder="Stok Produk"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -72,12 +58,12 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Foto Sopir:</strong>
+                            <strong>Foto Produk:</strong>
                             <input type="file" name="gambar">></textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                        <a class="btn btn-primary" href="{{ route('sopir.index') }}">Back</a>
+                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>

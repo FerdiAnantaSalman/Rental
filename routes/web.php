@@ -19,5 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/produk', ProdukController::class);
-Route::resource('/sopir', SopirController::class);
+Route::resource('produk', ProdukController::class);
+Route::resource('sopir', SopirController::class);
+Route::resource('peminjaman', PeminjamanController::class);
