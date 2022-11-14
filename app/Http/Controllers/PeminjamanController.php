@@ -3,48 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Produk;
+use App\Models\Sopir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanController extends Controller
 {
     public function index()
     {
-        $peminjamans =  Peminjaman::latest()->paginate(20);
+        $peminjamans = DB::table('peminjaman')
+            ->join('produk', 'produk.id', '=', 'peminjaman.produk')
+            ->join('sopir', 'sopir.id', '=', 'peminjaman.sopir')
+            ->get();
         return view('peminjaman.index', compact('peminjamans'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        return view('peminjaman.create');
+        $produks = Produk::all();
+        $sopirs = Sopir::all();
+        return view('peminjaman.create', compact('produks', 'sopirs'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nm_produk' => 'required',
-            'harga' => 'required',
-            'stok' => 'required',
-            'ket' => 'required',
-            'gambar' => 'required',
+            'no_ref' => 'required',
+            'no_cus' => 'required',
+            'nm_cus' => 'required',
+            'produk' => 'required',
+            'sopir' => 'required',
+            'jumlah' => 'required',
+            'lama_pinjam' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required',
         ]);
 
-        $file =  $request->file('gambar');
+        Peminjaman::create($request->all());
 
-        $nama_file = time() . "_" . $file->getClientOriginalName();
-
-        $tujuan_upload = 'data_file';
-        $file->move($tujuan_upload, $nama_file);
-
-        Peminjaman::create([
-            'nm_produk' => $request->nm_produk,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'ket' => $request->ket,
-            'gambar' => $nama_file,
-        ]);
-
-        return redirect()->route('produk.index')
-            ->with('succsess', 'Product created succsessfully.');
+        return redirect()->route('peminjaman.index')
+            ->with('succsess', 'Data created succsessfully.');
     }
 
     /**

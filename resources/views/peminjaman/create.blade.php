@@ -1,23 +1,16 @@
 @extends('layout')
 
 @section('content')
+
 <div class="container-fluid">
-    <h1 class="mt-4">Data Produk</h1>
+    <h1 class="mt-4">Data Peminjaman</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Produk/Barang</li>
+        <li class="breadcrumb-item active">Peminjaman</li>
     </ol>
 
     <div class="card mb-4">
-        <div class="card-header"><i class="fas fa-edit mr-1"></i>Data Barang/Produk</div>
+        <div class="card-header"><i class="fas fa-edit mr-1"></i>Data Peminjaman</div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div>
-                        <h2>Add New Product</h2>
-                    </div>
-                </div>
-            </div>
-
             @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops !</strong> There were some problems with your input. <br><br>
@@ -28,44 +21,83 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('peminjaman.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <div class="row">
+                <div class="form-row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Nama Produk:</strong>
-                            <input type="text" name="nm_produk" class="form-control" placeholder="Nama Produk"></input>
+                            <strong>Nomor Referensi:</strong>
+                            <input type="text" name="no_ref" class="form-control"
+                                placeholder="Masukkan No. Referensi"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Harga Produk:</strong>
-                            <input type="text" name="harga" class="form-control" placeholder="Harga Produk"></input>
+                            <strong>Nomor Customer:</strong>
+                            <input type="text" name="no_cus" class="form-control"
+                                placeholder="Masukkan Nomor Customer"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Stok Produk:</strong>
-                            <input type="text" name="stok" class="form-control" placeholder="Stok Produk"></input>
+                            <strong>Nama Customer:</strong>
+                            <input type="text" name="nm_cus" class="form-control"
+                                placeholder="Masukkan Nama Customer"></input>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Keterangan:</strong>
-                            <textarea class="form-control" name="ket"></textarea>
+                            <strong>Produk:</strong>
+                            <select class="form-control" name="produk">
+                                <option>Pilih Produk</option>
+                                @foreach ($produks as $produk)
+                                <option value="{{ $produk->id }}">{{ $produk->nm_produk }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Foto Produk:</strong>
-                            <input type="file" name="gambar">></textarea>
+                            <strong>Nama Sopir:</strong>
+                            <select class="form-control" name="sopir">
+                                <option>Pilih Sopir</option>
+                                @foreach ($sopirs as $sopir)
+                                <option value="{{ $sopir->id }}">{{ $sopir->nm_sopir }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                        <a class="btn btn-primary" href="{{ route('produk.index') }}">Back</a>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Jumlah:</strong>
+                            <input type="text" name="jumlah" class="form-control"
+                                placeholder="Masukkan Jumlah Pinjam"></input>
+                        </div>
                     </div>
-                </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Lama Pinjam:</strong>
+                            <input type="text" name="lama_pinjam" class="form-control"
+                                placeholder="Masukkan Lama Pinjam"></input>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Tanggal Pinjam:</strong>
+                            <input type="date" name="tgl_pinjam" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Tanggal Kembali:</strong>
+                            <input type="date" name="tgl_kembali" class="form-control"></input>
+                        </div>
+                        <div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                                <a class="btn btn-primary" href="{{ route('sopir.index') }}">Back</a>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
             </form>
             @endsection

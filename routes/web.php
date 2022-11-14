@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SopirController;
+use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 /*

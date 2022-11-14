@@ -84,7 +84,7 @@
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                     data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav"><a class="nav-link"
-                                            href="{{ route('peminjaman.index')}}">Peminjaman</a><a class="nav-link"
+                                            href="{{ route('peminjaman.index') }}">Peminjaman</a><a class="nav-link"
                                             href="register.html">Pembayaran</a><a class="nav-link"
                                             href="password.html">Pengembalian</a></nav>
                                 </div>
