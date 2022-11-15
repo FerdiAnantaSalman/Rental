@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SopirController;
 use App\Http\Controllers\PeminjamanController;
@@ -17,9 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::resource('produk', ProdukController::class);
 Route::resource('sopir', SopirController::class);
 Route::resource('peminjaman', PeminjamanController::class);
+
+Route::get('login', [App\Http\Controllers\LoginController::class, 'index'])->name(
+    'login'
+)->middleware('guest');
+
+Route::post('login', [App\Http\Controllers\LoginController::class, 'authenticate']);
