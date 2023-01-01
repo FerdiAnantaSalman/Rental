@@ -24,6 +24,7 @@
                         <th>Jumlah</th>
                         <th>Tgl Pinjam</th>
                         <th>Tgl Kembali</th>
+                        <th>Total</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -49,6 +50,7 @@
                         <td>{{ $peminjaman->jumlah}}</td>
                         <td>{{ $peminjaman->tgl_pinjam}}</td>
                         <td>{{ $peminjaman->tgl_kembali}}</td>
+                        <td>{{ $peminjaman->total}}</td>
                         <td>
                             <form action="{{ route('peminjaman.destroy', $peminjaman->id); }}" method="POST">
                                 @csrf
@@ -62,6 +64,15 @@
                     </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    @foreach ($sums as $sum)
+                    <tr align="center">
+                        <th colspan="10">Total Transaksi</th>
+                        <th>{{ $sum->total_all }}</th>
+                        <th width="14%">Action</th>
+                    </tr>
+                    @endforeach
+                </tfoot>
             </table>
         </div>
     </div>

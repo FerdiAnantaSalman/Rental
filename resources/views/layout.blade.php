@@ -64,7 +64,7 @@
                             <nav class="sb-sidenav-menu-nested nav"><a class="nav-link"
                                     href="{{ route('produk.index') }}">Data
                                     Produk</a><a class="nav-link" href="{{ route('sopir.index') }}">Data Sopir</a><a
-                                    class="nav-link" href="layout-sidenav-light.html">Data Konsumen</a>
+                                    class="nav-link" href="{{ route('peminjaman.index') }}">Peminjaman</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -113,7 +113,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                
                 </div>
             </nav>
         </div>

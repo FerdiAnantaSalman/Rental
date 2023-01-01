@@ -16,6 +16,11 @@ class PeminjamanController extends Controller
             ->join('produk', 'produk.id', '=', 'peminjaman.produk')
             ->join('sopir', 'sopir.id', '=', 'peminjaman.sopir')
             ->get();
+
+        $sums = DB::table('peminjaman')
+            ->select(DB::raw("SUM(total) AS total_all"))
+            ->get();
+            
         return view('peminjaman.index', compact('peminjamans'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
@@ -40,7 +45,30 @@ class PeminjamanController extends Controller
             'tgl_kembali' => 'required',
         ]);
 
-        Peminjaman::create($request->all());
+        $harga_kendaraan = $request->input('harga');
+        $jml = $request->input('jumlah');
+        $lama = $request->input('lama_pinjam');
+        $harga_sopir = 50000;
+        $total = (($harga_kendaraan * $jml) * $lama) + $harga_sopir;
+        $stok = $request->input('stok');
+        $sisa = $stok - $jml;
+
+
+        Peminjaman::create([
+            'no_ref' => $request->no_ref,
+            'no_cus' => $request->no_cus,
+            'nm_cus' => $request->nm_cus,
+            'produk' => $request->produk,
+            'sopir' => $request->sopir,
+            'jumlah' => $request->jumlah,
+            'lama_pinjam' => $request->lama_pinjam,
+            'tgl_pinjam' => $request->tgl_pinjam,
+            'tgl_kembali' => $request->tgl_kembali,
+            'total' => $total,
+        ]);
+
+        DB::table('produk')->where('id', $request->produk)->update([
+        'stok' => $sisa]);
 
         return redirect()->route('peminjaman.index')
             ->with('succsess', 'Data created succsessfully.');

@@ -21,6 +21,6 @@ class Peminjaman extends Model
         'lama_pinjam',
         'tgl_pinjam',
         'tgl_kembali',
-        'tot_bayar',
+        'total',
     ];
 }

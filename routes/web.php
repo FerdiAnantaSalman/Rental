@@ -17,16 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
+Route::get('welcome', function () {
+    return view('welcome');
 });
 
 Route::resource('produk', ProdukController::class);
 Route::resource('sopir', SopirController::class);
 Route::resource('peminjaman', PeminjamanController::class);
 
-Route::get('login', [App\Http\Controllers\LoginController::class, 'index'])->name(
+Route::get('/login', [App\Http\Controllers\UserController::class, 'index'])->name(
     'login'
 )->middleware('guest');
 
-Route::post('login', [App\Http\Controllers\LoginController::class, 'authenticate']);
+Route::post('/login', [App\Http\Controllers\UserController::class, 'authenticate']);
+Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout']);

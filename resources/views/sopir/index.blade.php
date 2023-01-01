@@ -52,7 +52,8 @@
                                 @csrf
                                 @method('DELETE')
                                 <a class="btn btn-warning" href="{{ route('sopir.edit', $sopir->id); }}">Edit</a>
-                                <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="javascript: return confirm('Apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
                             </form>
                         </td>
                     </tr>

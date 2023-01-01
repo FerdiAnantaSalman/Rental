@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+use function PHPUnit\Framework\returnSelf;
+
+class UserController extends Controller
 {
     public function index()
     {
@@ -26,5 +28,13 @@ class LoginController extends Controller
         }
 
         return back()->with('loginError', 'Login Failed');
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        request()->session()->invalidate();
+        return redirect('/login');
     }
 }
