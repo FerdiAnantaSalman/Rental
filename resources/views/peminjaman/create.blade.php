@@ -47,7 +47,7 @@
             <div class="form-group">
                 <strong>Produk:</strong>
                 <select class="form-control" name="produk" id="produk" onchange="changeValue(this.value)">
-                    <option>Pilih Produk</option>
+                    <option>Pilih Produk sad</option>
 
                     <?php 
                     $jsArray = "var prdName = new Array();\n";
